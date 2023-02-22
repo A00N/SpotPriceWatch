@@ -1,0 +1,45 @@
+
+h1 {
+    text-align: center;
+    font-weight: normal;
+    font: 48px Arial;
+    font-family: "Times New Roman", serif;
+}
+body {
+    font-family: "Times New Roman", serif;
+    background-image: linear-gradient(#53ACCD,#B0E9FD);
+    max-width: max-content;
+    margin: auto;
+}
+.price-box-large {
+          display: inline-block;
+          padding: 0.2em 2.7em;
+          font: 40px Arial;
+          background-color: #ADD8E6;
+          color: black;
+          border: 2px solid black;
+          border-radius: 0.25em;
+          text-align: center;
+          font-family: "Times New Roman", serif;
+          margin: 5px;
+        }
+.price-box {
+          display: inline-block;
+          padding: 0.2em 2.3em;
+          font: 20px Arial;
+          text-align: center;
+          background-color: #ADD8E6;
+          color: black;
+          border: 2px solid black;
+          border-radius: 0.25em;
+          font-family: "Times New Roman", serif;
+          margin: 5px;
+        }
+
+canvas {
+    border: 2px solid black;
+    background-color: #ADD8E6;
+    margin-left: 45px;
+    margin-right: auto;
+    display: block;
+}

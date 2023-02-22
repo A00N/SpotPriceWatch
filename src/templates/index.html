@@ -1,0 +1,77 @@
+<head>
+    <link rel="stylesheet" href="static/style.css" >
+</head>
+<div>
+  <h1>Electricity spot prices {{date}}</h1>
+  <ul>
+    <span class="price-box-large"> Current price at {{current_time}}-{{current_time_plus}} <br> {{current_price}} <br> c/kWh </span>
+    <br>
+    <span class="price-box">Cheapest price at {{min_time}}-{{min_time_plus}} <br> {{min_price}} <br> c/kWh</span>
+    <span class="price-box">Highest price at {{max_time}}-{{max_time_plus}} <br> {{max_price}} <br> c/kWh</span>
+  </ul>
+
+
+  <canvas id="bar-chart" width="570" height="370"></canvas>
+    </div>
+  <script>
+    const data = {{ day_prices|tojson }}
+
+    const canvas = document.getElementById("bar-chart");
+    const ctx = canvas.getContext("2d");
+
+    // Bar stats
+    const barWidth = 18;
+    const barGap = 5;
+    const barColor = "#FFFF00";
+    const barHighlightColor = "#FDBA1F";
+    const barLabels = data.map(item => item[0]);
+    const barValues = data.map(item => item[1]);
+    const maxValue = Math.max(...barValues);
+    const scale = (canvas.height - 80) / maxValue;
+
+    // Get the index of the bar to highlight
+    const highlightIndex = {{ hour|tojson }};
+
+    // Draw the x-axis, ticks and bars
+    for (let i = 0; i < barValues.length; i++) {
+        const x = (i * (barWidth + barGap)) + barGap + 15;
+        const y = canvas.height - (barValues[i] * scale) - 20;
+
+        if (i == highlightIndex) {
+            ctx.fillStyle = barHighlightColor;
+        } else {
+            ctx.fillStyle = barColor;
+        }
+
+        ctx.fillRect(x, y, barWidth, barValues[i] * scale);
+
+        ctx.strokeStyle = "000000";
+        ctx.font = "11px Arial";
+        ctx.fillStyle = "#000000";
+        ctx.textAlign = "left";
+        ctx.fillStyle = "black";
+        ctx.fillText(barLabels[i], x + 5, canvas.height - 25);
+    }
+
+    // Draw the y-axis ticks and labels
+    ctx.strokeStyle = "000000";
+    ctx.font = "11px Arial";
+    ctx.fillStyle = "#000000";
+    ctx.textAlign = "right";
+    for (let i = 0; i <= maxValue+10; i += 5) {
+        const y = canvas.height - (i * scale) - 20;
+        ctx.beginPath();
+        ctx.moveTo(20, y);
+        ctx.setLineDash([5, 5]);
+        ctx.lineTo(570, y);
+        ctx.stroke();
+        ctx.fillText(i, 15, y+5 );
+    }
+
+    // Add c/kWh text to top left corner
+    ctx.font = "12px Arial";
+    ctx.fillStyle = "#000000";
+    ctx.textAlign = "left";
+    ctx.fillText("c/kWh", 10, 20);
+  </script>
+</div>
