@@ -2,7 +2,8 @@
 
 ## Kuvaus
 SpotPriceWatch on sivu, joka näyttää automaattisesti päivän pörssisähkön hinnan.
-##HUOM! Toistaiseksi sovellus ei ole tuotannossa
+##HUOM! 
+Toistaiseksi sovellus ei ole tuotannossa
 ## Ominaisuudet
 - Tämän tunnin hinta
 - Päivän halvin hinta
