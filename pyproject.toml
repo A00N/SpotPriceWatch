@@ -1,0 +1,17 @@
+[tool.poetry]
+name = "spotprice"
+version = "0.1.0"
+description = ""
+authors = ["Nooa Saareks <nsaareks@gmail.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.8"
+flask = "^2.2.3"
+requests = "^2.28.2"
+pytest = "^7.2.1"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
