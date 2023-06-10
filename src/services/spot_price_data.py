@@ -27,7 +27,7 @@ class ElectricSpotPrices:
 
     def current_price(self):
         now = datetime.now()
-        current_time = now.strftime("%Y-%m-%dT%H:00:00+02:00")
+        current_time = now.strftime("%Y-%m-%dT%H:00:00+03:00")
         for date in self.data:
             if date['DateTime'] == current_time:
                 time = parse_datetime(date["DateTime"])
